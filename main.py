@@ -18,7 +18,7 @@ def create_grid(point1, point2):
     # Nested for loop for adding all the points to the list from the min to max of corner points
     # Also adds a bit extra to the grid size to be sure a path can be made
     for x in range(int(min(point1[0], point2[0]) - grid_extra_size), int(max(point1[0], point2[0]) + grid_extra_size)):
-        for y in range(int(min(point1[1], point2[1]) - grid_extra_size), int(max(point1[1], point1[1]) + grid_extra_size)):
+        for y in range(int(min(point1[1], point2[1]) - grid_extra_size), int(max(point1[1], point2[1]) + grid_extra_size)):
             graph_points.append((x, y))
 
     return graph_points
@@ -147,10 +147,14 @@ def navigate_to_point(target_gps):
     path = dijkstras(grid_points, origin_grid, target_grid)
 
     # Infinite loop that will just run until broken
+    for point in path:
+        print(str(point))
     while True:
+
         # If the path list isn't empty run, if it is empty break the loop because rover is probably at target location or it broke
         if path:
             next_point = path[0]
+            print(str(next_point))
             go_to_point((next_point[0] * grid_point_size, next_point[1] * grid_point_size))
             path.pop(0)
 
