@@ -5,8 +5,8 @@ import math
 
 grid_point_size = 1
 grid_extra_size = 5
-heading_latency = 5
-angular_speed = 0.5
+heading_latency = 1
+angular_speed = 0.8
 linear_speed = 0.5
 rover = Rover()
 
@@ -17,8 +17,8 @@ def create_grid(point1, point2):
 
     # Nested for loop for adding all the points to the list from the min to max of corner points
     # Also adds a bit extra to the grid size to be sure a path can be made
-    for x in range(min(point1[0], point2[0]) - grid_extra_size, max(point1[0], point2[0]) + grid_extra_size):
-        for y in range(min(point1[1], point2[1]) - grid_extra_size, max(point1[1], point1[1]) + grid_extra_size):
+    for x in range(int(min(point1[0], point2[0]) - grid_extra_size), int(max(point1[0], point2[0]) + grid_extra_size)):
+        for y in range(int(min(point1[1], point2[1]) - grid_extra_size), int(max(point1[1], point1[1]) + grid_extra_size)):
             graph_points.append((x, y))
 
     return graph_points
@@ -174,4 +174,4 @@ def navigate_to_point(target_gps):
 
 
 
-go_to_point((1,1))
+navigate_to_point((5,3))
